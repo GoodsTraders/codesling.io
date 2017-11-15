@@ -68,32 +68,58 @@ class Sling extends Component {
 
   render() {
     return (
-      <div className="sling-container">
-        <EditorHeader />
-        <div className="code-editor-container">
-          <CodeMirror
-            editorDidMount={this.initializeEditor}
-            value={this.state.text}
-            options={{
-              mode: 'javascript',
-              lineNumbers: true,
-              theme: 'base16-dark',
-            }}
-            onChange={this.handleChange}
-          />
+      <div className='container-fluid'>
+
+        <div className="sling-container">
+          <EditorHeader />
+        <div className='row'>
+          <div className='col-lg-6'>
+            <div className="code-editor-container">
+              <CodeMirror
+                editorDidMount={this.initializeEditor}
+                value={this.state.text}
+                options={{
+                  mode: 'javascript',
+                  lineNumbers: true,
+                  theme: 'base16-dark',
+                }}
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+
+          <div className='col-lg-6'>
+            <div className="stdout-container">
+              <Button
+                className="run-btn"
+                text="Run Code"
+                backgroundColor="red"
+                color="white"
+                onClick={this.runCode}
+              />
+              <StdOut 
+                text={this.state.stdout}
+              />
+            </div>
+          </div>
         </div>
-        <div className="stdout-container">
-          <Button
-            className="run-btn"
-            text="Run Code"
-            backgroundColor="red"
-            color="white"
-            onClick={this.runCode}
-          />
-          <StdOut 
-            text={this.state.stdout}
-          />
+
+        <div className='row'>
+          <div className='col-lg-6'>
+            <div className="stdout-container">
+              <h2>TEST CASE COMPONENT WILL GO HERE</h2>
+            </div>
+          </div>
+
+          <div className='col-lg-6'>
+            <div className="stdout-container">
+              <h2>TEST CASE OUTPUT PASS/FAIL ETC WILL GO HERE</h2>
+            </div>
+          </div>
         </div>
+
+
+      </div>
       </div>
     );
   }
