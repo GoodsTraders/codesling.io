@@ -5,7 +5,7 @@ const EditorNavbar = () => (
   <nav className="editor-navbar">
     <ul>
       <li className="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="dropdown" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <a className="nav-link dropdown-toggle" href="dropdown" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           Dropdown link
         </a>
       <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
