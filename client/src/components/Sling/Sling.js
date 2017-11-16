@@ -95,6 +95,7 @@ class Sling extends Component {
       <div className='container-fluid'>
 
         <div className="sling-container">
+        <h5 className='box-header' id='code-header'>Code</h5>
           <EditorHeader />
         <div className='row'>
           <div className='col-lg-6'>
@@ -128,9 +129,11 @@ class Sling extends Component {
           </div>
         </div>
 
+        <hr id='hr-divider'/>
+
         <div className='row'>
           <div className='col-lg-6'>
-              <h2>TEST CASE INPUT</h2>
+              <h5 className='box-header'>Test Cases</h5>
               <div className="code-editor-container">
                 <CodeMirror
                   editorDidMount={this.initializeEditor}
@@ -159,12 +162,6 @@ class Sling extends Component {
                   text={this.state.testout}
                 />
               </div>
-            </div>
-          </div>
-
-          <div className='col-lg-6'>
-            <div className="stdout-container">
-              <h2>TEST CASE OUTPUT PASS/FAIL ETC WILL GO HERE</h2>
             </div>
           </div>
         </div>

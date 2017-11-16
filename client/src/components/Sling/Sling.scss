@@ -16,14 +16,6 @@ $stdoutGutter: 30px;
     "header"
     "code"
     "stdout";
-
-  @include mq('md') {
-    grid-template-columns:
-      50% 50%;
-    grid-template-areas:
-      "header header"
-      "code   stdout";
-  }
 }
 
 .code-editor-container {
@@ -51,4 +43,20 @@ $stdoutGutter: 30px;
   background: palette('darkgray', -7);
   padding: 5px;
   margin: 0 $stdoutGutter;
+}
+
+#hr-divider{
+  border: 0;
+  width: 100%;
+  border-bottom: 3px solid #c24040;
+}
+
+.box-header{
+  letter-spacing:1px;
+  font-weight:200;
+  color:#ddd;
+}
+
+#code-header{
+  margin-top:16px;
 }
