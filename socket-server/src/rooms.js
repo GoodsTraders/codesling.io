@@ -23,6 +23,7 @@ export default class Rooms {
       room = new Map();
       room.set('id', roomId);
       room.set('text', startingText);
+      room.set('testText', 'TEST CASES HERE');
       this.store.set(roomId, room);
     }
     return room;

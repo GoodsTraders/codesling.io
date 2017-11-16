@@ -4,8 +4,10 @@ import log from './lib/log';
 import {
   serverInitialState,
   serverChanged,
+  serverTestChanged,
   serverLeave,
   serverRun,
+  serverRunTest,
   serverMessage,
 } from './serverEvents';
 
@@ -26,9 +28,15 @@ const clientReady = ({ io, client, room }) => {
 };
 
 const clientUpdate = ({ io, client, room }, payload) => {
-  log('client update heard. payload.text = ', payload.text);
+  log('client update heard. payload.text = ', payload);
   room.set('text', payload.text);
   serverChanged({ io, client, room });
+};
+
+const clientTestUpdate = ({ io, client, room }, payload) => {
+  log('client test update heard. payload.text = ', payload.testText);
+  room.set('testText', payload.testText);
+  serverTestChanged({ io, client, room });
 };
 
 const clientDisconnect = ({ io, room }) => {
@@ -51,6 +59,23 @@ const clientRun = async ({ io, room }) => {
   }
 };
 
+const clientTest = async ({ io, room }) => {
+  log('Running tests...');
+  const url = process.env.CODERUNNER_SERVICE_URL;
+  let code = room.get('text');
+  code += ('\n' + room.get('testText'));
+  console.log("CODE IS", code);
+
+  try {
+    const { data } = await axios.post(`${url}/submit-code`, { code });
+    const testout = data;
+    console.log("TEST OUTPUT", testout);
+    serverRunTest({ io, room }, testout);
+  } catch (e) {
+    log('error posting to coderunner service from socket server. e = ', e);
+  }
+}
+
 const clientMessage = ({ io, room }, payload) => {
   log('client message heard');
   serverMessage({ io, room }, payload);
@@ -59,9 +84,11 @@ const clientMessage = ({ io, room }, payload) => {
 const clientEmitters = {
   'client.ready': clientReady,
   'client.update': clientUpdate,
+  'client.updateTest': clientTestUpdate,
   'client.disconnect': clientDisconnect,
   'client.run': clientRun,
   'client.message': clientMessage,
+  'client.test': clientTest,
 };
 
 export default clientEmitters;
