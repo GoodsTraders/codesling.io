@@ -4,6 +4,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import tmp from 'tmp';
 import cors from 'cors';
+import tests from './testing.js';
 
 import log from './lib/log';
 
@@ -38,15 +39,11 @@ app.post('/submit-code', (req, res) => {
 });
 
 app.post('/tests', function(req, res) {
-
-
-
+  
 }) 
 
 app.post('/tests', (req, res) => {
-  var chai = require('chai');
-  var expect = chai.expect;
-  console.log(expect(0).to.equal(0));
+  req.body.code
 })
 
 app.listen(PORT, log(`coderunner-service is listening on port ${PORT}`));

@@ -4,14 +4,17 @@
   "scripts": {
     "test": "jest",
     "start": "nodemon bin/entry.js",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "mocha test": "mocha"
   },
   "devDependencies": {
     "babel-jest": "^21.2.0",
+    "chai": "^4.1.2",
     "eslint": "^4.8.0",
     "eslint-config-airbnb-base": "^12.0.1",
     "eslint-plugin-import": "^2.7.0",
     "jest": "^21.1.0",
+    "mocha": "^4.0.1",
     "nodemon": "^1.12.1"
   },
   "dependencies": {
@@ -20,12 +23,10 @@
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
     "body-parser": "^1.18.1",
-    "chai": "^4.1.2",
     "chai-http": "^3.0.0",
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
-    "mocha": "^4.0.1",
     "tmp": "^0.0.33"
   }
 }
