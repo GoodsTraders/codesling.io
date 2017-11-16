@@ -20,6 +20,8 @@ class Sling extends Component {
     testout: ''
   }
 
+  
+
   runCode = () => {
     this.socket.emit('client.run');
   }
@@ -135,6 +137,8 @@ class Sling extends Component {
           <div className='col-lg-6'>
               <h5 className='box-header'>Test Cases</h5>
               <div className="code-editor-container">
+              
+              <div id="mocha"></div>
                 <CodeMirror
                   editorDidMount={this.initializeEditor}
                   value={this.state.testText}
@@ -158,6 +162,7 @@ class Sling extends Component {
                   color="white"
                   onClick={this.runTest}
                 />
+                <div id='mocha'></div>
                 <StdOut 
                   text={this.state.testout}
                 />
