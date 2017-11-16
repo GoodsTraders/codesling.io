@@ -67,7 +67,7 @@ const clientTest = async ({ io, room }) => {
   console.log("CODE IS", code);
 
   try {
-    const { data } = await axios.post(`${url}/submit-code`, { code });
+    const { data } = await axios.post(`${url}/tests`, { code });
     const testout = data;
     console.log("TEST OUTPUT", testout);
     serverRunTest({ io, room }, testout);
