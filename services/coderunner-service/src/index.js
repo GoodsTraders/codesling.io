@@ -4,6 +4,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import tmp from 'tmp';
 import cors from 'cors';
+import tests from './testing.js';
 
 import log from './lib/log';
 
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.post('/submit-code', (req, res) => {
+  console.log('this is the code', req.body.code);
   tmp.file({ postfix: '.js' }, (errCreatingTmpFile, path) => {
     writeFile(path, req.body.code, (errWritingFile) => {
       if (errWritingFile) {
@@ -26,6 +28,7 @@ app.post('/submit-code', (req, res) => {
             stderrFormatted = stderrFormatted.join('\n');
             res.send(stderrFormatted);
           } else {
+            console.log('this is stdout2', stdout);
             res.write(JSON.stringify(stdout));
             res.send();
           }
@@ -34,5 +37,13 @@ app.post('/submit-code', (req, res) => {
     });
   });
 });
+
+app.post('/tests', function(req, res) {
+  
+}) 
+
+app.post('/tests', (req, res) => {
+  req.body.code
+})
 
 app.listen(PORT, log(`coderunner-service is listening on port ${PORT}`));
