@@ -15,11 +15,17 @@ import './Sling.css';
 class Sling extends Component {
   state = {
     text: '',
-    stdout: ''
+    testText: '',
+    stdout: '',
+    testout: ''
   }
 
   runCode = () => {
     this.socket.emit('client.run');
+  }
+
+  runTest = () => {
+    this.socket.emit('client.test');
   }
 
   componentDidMount() {
@@ -33,16 +39,24 @@ class Sling extends Component {
       this.socket.emit('client.ready');
     });
 
-    this.socket.on('server.initialState', ({ id, text }) => {
-      this.setState({ id, text });
+    this.socket.on('server.initialState', ({ id, text, testText }) => {
+      this.setState({ id, text, testText });
     });
 
     this.socket.on('server.changed', ({ text }) => {
       this.setState({ text });
     });
 
+    this.socket.on('server.testChanged', ({ testText }) => {
+      this.setState({ testText });
+    });
+
     this.socket.on('server.run', ({ stdout }) => {
       this.setState({ stdout });
+    });
+
+    this.socket.on('server.runTest', ({ testout }) => {
+      this.setState({ testout });
     });
 
     window.addEventListener('resize', this.setEditorSize);
@@ -59,6 +73,16 @@ class Sling extends Component {
   setEditorSize = throttle(() => {
     this.editor.setSize(null, `${window.innerHeight - 80}px`);
   }, 100);
+
+  handleTest = throttle((editor, metadata, value) => {
+    this.socket.emit('client.updateTest', { testText: value });
+  }, 250)
+
+  // handleTest(e) {
+  //   this.setState({
+  //     testText: e.target.value
+  //   })
+  // }
 
   initializeEditor = (editor) => {
     // give the component a reference to the CodeMirror instance
@@ -106,8 +130,35 @@ class Sling extends Component {
 
         <div className='row'>
           <div className='col-lg-6'>
-            <div className="stdout-container">
-              <h2>TEST CASE COMPONENT WILL GO HERE</h2>
+              <h2>TEST CASE INPUT</h2>
+              <div className="code-editor-container">
+                <CodeMirror
+                  editorDidMount={this.initializeEditor}
+                  value={this.state.testText}
+                  options={{
+                    mode: 'javascript',
+                    lineNumbers: true,
+                    theme: 'base16-dark',
+                  }}
+                  onChange={this.handleTest}
+                />
+              </div>
+              {/* <input type='text' onChange={this.handleTest} />
+              <button type='button' onClick={this.runTest.bind(this)} >Click to Test</button> */}
+            </div>
+            <div className='col-lg-6'>
+              <div className="stdout-container">
+                <Button
+                  className="run-btn"
+                  text="Run Tests"
+                  backgroundColor="red"
+                  color="white"
+                  onClick={this.runTest}
+                />
+                <StdOut 
+                  text={this.state.testout}
+                />
+              </div>
             </div>
           </div>
 
@@ -119,7 +170,6 @@ class Sling extends Component {
         </div>
 
 
-      </div>
       </div>
     );
   }

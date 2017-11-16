@@ -9,6 +9,10 @@ const slingSchema = mongoose.Schema({
     type: String,
     required: false,
   },
+  testText: {
+    type: String,
+    require: false,
+  }
 });
 
 const Sling = mongoose.model('Sling', slingSchema);
