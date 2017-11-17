@@ -4,7 +4,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import tmp from 'tmp';
 import cors from 'cors';
-import tests from './testing.js';
 
 import log from './lib/log';
 
@@ -47,16 +46,8 @@ app.post('/tests', (req, res) => {
         res.send(errWritingFile);
       } else {
         execFile('mocha', [pathway], (errExecutingFile, stdout, stderr) => {
-          if (errExecutingFile) {
-            let stderrFormatted = stderr.split('\n');
-            stderrFormatted.shift();
-            stderrFormatted = stderrFormatted.join('\n');
-            res.send(stderrFormatted);
-          } else {
-            console.log('this is stdout2', stdout);
-            res.write(JSON.stringify(stdout));
-            res.send();
-          }
+          res.write(JSON.stringify(stdout));
+          res.send();
         });
       }
     });
