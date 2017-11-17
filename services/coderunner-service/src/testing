@@ -1,0 +1,13 @@
+function hello() {
+  console.log('hello!');
+}
+
+hello();
+
+var expect = require('chai').expect;
+
+describe('Mocha + Chai JsFiddle', function() {
+	it('really runs', function() {
+  	expect('hello').to.equal('hello');
+  });
+});

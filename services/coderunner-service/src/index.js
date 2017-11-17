@@ -38,12 +38,31 @@ app.post('/submit-code', (req, res) => {
   });
 });
 
-app.post('/tests', function(req, res) {
-  
-}) 
-
 app.post('/tests', (req, res) => {
-  req.body.code
-})
+  var pathway = __dirname + '/testing';
+  console.log('this is my pathway', pathway);
+  console.log('this is the code', req.body.code);
+  // tmp.file({ postfix: '.js' }, (errCreatingTmpFile, pathway) => {
+  //   console.log('this is path', pathway);
+    writeFile(pathway, req.body.code, (errWritingFile) => {
+      if (errWritingFile) {
+        res.send(errWritingFile);
+      } else {
+        execFile('mocha', [pathway], (errExecutingFile, stdout, stderr) => {
+          if (errExecutingFile) {
+            let stderrFormatted = stderr.split('\n');
+            stderrFormatted.shift();
+            stderrFormatted = stderrFormatted.join('\n');
+            res.send(stderrFormatted);
+          } else {
+            console.log('this is stdout2', stdout);
+            res.write(JSON.stringify(stdout));
+            res.send();
+          }
+        });
+      }
+    });
+  // });
+});
 
 app.listen(PORT, log(`coderunner-service is listening on port ${PORT}`));
