@@ -1,13 +1,4 @@
-function hello() {
-  console.log('hello!');
-}
-
-hello();
-
 var expect = require('chai').expect;
-
-describe('Mocha + Chai JsFiddle', function() {
-	it('really runs', function() {
-  	expect(0).to.equal(0);
-  });
+it('really runs', function() {
+  expect(0).to.equal(0);
 });

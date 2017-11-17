@@ -63,7 +63,7 @@ const clientTest = async ({ io, room }) => {
   log('Running tests...');
   const url = process.env.CODERUNNER_SERVICE_URL;
   let code = room.get('text');
-  code += ('\n' + room.get('testText'));
+  code = ('\n' + room.get('testText'));
   console.log("CODE IS", code);
 
   try {

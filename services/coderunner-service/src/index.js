@@ -15,7 +15,6 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.post('/submit-code', (req, res) => {
-  console.log('this is the code', req.body.code);
   tmp.file({ postfix: '.js' }, (errCreatingTmpFile, path) => {
     writeFile(path, req.body.code, (errWritingFile) => {
       if (errWritingFile) {
@@ -40,9 +39,10 @@ app.post('/submit-code', (req, res) => {
 
 app.post('/tests', (req, res) => {
   var pathway = __dirname + '/testing';
+  let requirements = `var expect = require('chai').expect;`;
   console.log('this is my pathway', pathway);
   console.log('this is the code', req.body.code);
-    writeFile(pathway, req.body.code, (errWritingFile) => {
+    writeFile(pathway, (requirements + req.body.code), (errWritingFile) => {
       if (errWritingFile) {
         res.send(errWritingFile);
       } else {
