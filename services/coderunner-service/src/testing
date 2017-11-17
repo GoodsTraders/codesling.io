@@ -1,4 +1,0 @@
-var expect = require('chai').expect;
-it('Enter Your Testcase Here!', function() 
-    {expect('FILL_ME_IN').to.equal('FILL_ME_IN');
-});
