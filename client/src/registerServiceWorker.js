@@ -33,9 +33,10 @@ export default function register() {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
 
       if (!isLocalhost) {
-        // Is not local host. Just register service worker
-        registerValidSW(swUrl);
+        // Is not local host. Just register service worker      
+ registerValidSW(swUrl);
       } else {
+              
         // This is running on localhost. Lets check if a service worker still exists or not.
         checkValidServiceWorker(swUrl);
       }

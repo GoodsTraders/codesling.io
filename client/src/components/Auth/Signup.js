@@ -27,7 +27,7 @@ class Signup extends Component {
     const { data } = await axios.post(`${process.env.REACT_APP_REST_SERVER_URL}/api/users`, {
       username,
       password
-    });
+    };
     const { accessToken } = data;
     localStorage.setItem('token', accessToken);
     this.props.history.push('/');
