@@ -73,7 +73,7 @@ class Sling extends Component {
   }, 250)
 
   setEditorSize = throttle(() => {
-    this.editor.setSize(null, `${window.innerHeight - 550}px`);
+    this.editor.setSize(null, `${window.innerHeight - 420}px`);
   }, 100);
 
   handleTest = throttle((editor, metadata, value) => {
