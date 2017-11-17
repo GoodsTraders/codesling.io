@@ -42,8 +42,6 @@ app.post('/tests', (req, res) => {
   var pathway = __dirname + '/testing';
   console.log('this is my pathway', pathway);
   console.log('this is the code', req.body.code);
-  // tmp.file({ postfix: '.js' }, (errCreatingTmpFile, pathway) => {
-  //   console.log('this is path', pathway);
     writeFile(pathway, req.body.code, (errWritingFile) => {
       if (errWritingFile) {
         res.send(errWritingFile);
@@ -62,13 +60,6 @@ app.post('/tests', (req, res) => {
         });
       }
     });
-<<<<<<< HEAD
-  // });
 });
-=======
-  });
-}) 
-
->>>>>>> write file working
 
 app.listen(PORT, log(`coderunner-service is listening on port ${PORT}`));
