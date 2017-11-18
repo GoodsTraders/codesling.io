@@ -1,0 +1,19 @@
+var expect = require('chai').expect;
+it('Enter Your Testcase Here!', function() 
+    {expect(0).to.equal(0);
+});
+it('FAILING TEST DESC', function() 
+    {expect('123').to.equal('321');
+});
+it('PASSING TEST', function() 
+    {expect('123').to.equal('123');
+});
+it('ANOTHER PASSING TEST', function() 
+    {expect('123567').to.equal('123567');
+});
+it('FAILING HERE AGAIN', function() 
+    {expect('fail').to.equal('here');
+});
+it('FAILINGGGGGG SDG', function() 
+    {expect('fail').to.equal('AGAINE');
+});
