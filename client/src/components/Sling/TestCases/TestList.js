@@ -14,7 +14,6 @@ constructor(props){
 }
 
    componentWillReceiveProps(nextProp){
-       console.log('nextProp', nextProp);
        let temp = [];
        let entryArray = [];
        let counter = 0;

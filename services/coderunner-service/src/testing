@@ -1,19 +1,13 @@
 var expect = require('chai').expect;
 it('Enter Your Testcase Here!', function() 
-    {expect(0).to.equal(0);
+    {expect('FILL_ME_IN').to.equal('FILL_ME_IN');
 });
-it('FAILING TEST DESC', function() 
-    {expect('123').to.equal('321');
+it('Enaedaaaaasssssssssssre!', function() 
+    {expect(0).to.equal(1);
 });
-it('PASSING TEST', function() 
-    {expect('123').to.equal('123');
+it('EnterFASSDre!', function() 
+    {expect('FIaLdLsd_ME_IN').to.equal('FILL_ME_IN');
 });
-it('ANOTHER PASSING TEST', function() 
-    {expect('123567').to.equal('123567');
-});
-it('FAILING HERE AGAIN', function() 
-    {expect('fail').to.equal('here');
-});
-it('FAILINGGGGGG SDG', function() 
-    {expect('fail').to.equal('AGAINE');
+it('Enter Your Testcase Here!', function() 
+    {expect('FPass').to.equal('FPass');
 });

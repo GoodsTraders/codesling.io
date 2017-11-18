@@ -64,13 +64,10 @@ const clientTest = async ({ io, room }) => {
   const url = process.env.CODERUNNER_SERVICE_URL;
   let code = room.get('text');
   code = ('\n' + room.get('testText'));
-  console.log("CODE IS", code);
 
   try {
     const { data } = await axios.post(`${url}/tests`, { code });
-    // const testout = data;
-
-    // console.log('data : ', data);
+  
     let testout = data.split('\n');
     let cleaned_array = [];
 
@@ -84,9 +81,6 @@ const clientTest = async ({ io, room }) => {
       }
     }
 
-    console.log('cleaned_array:', cleaned_array);
-
-    // console.log("TEST OUTPUT", testout);
     serverRunTest({ io, room }, cleaned_array);
   } catch (e) {
     log('error posting to coderunner service from socket server. e = ', e);
