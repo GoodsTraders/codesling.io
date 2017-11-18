@@ -1,0 +1,13 @@
+var expect = require('chai').expect;
+it('Enter Your Testcase Here!', function() 
+    {expect('FILL_ME_IN').to.equal('FILL_ME_IN');
+});
+it('Enaedaaaaasssssssssssre!', function() 
+    {expect(0).to.equal(1);
+});
+it('EnterFASSDre!', function() 
+    {expect('FIaLdLsd_ME_IN').to.equal('FILL_ME_IN');
+});
+it('Enter Your Testcase Here!', function() 
+    {expect('FPass').to.equal('FPass');
+});

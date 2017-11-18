@@ -59,3 +59,31 @@ $stdoutGutter: 30px;
 #code-header{
   margin-top:16px;
 }
+
+.passing-test{
+  color:#90a959;
+}
+
+.failing-test{
+  color:#ac4142;
+}
+
+.fail-test-wrapper{
+  margin-left:60px;
+  color:#ac4142;
+  margin-left: 25px;
+  margin-right: 20px;
+}
+
+.fail-test-each{
+  margin-bottom:25px;
+  border: 2px solid #ac4142;
+  background-color: #ac4142;
+  padding: 5px;
+  color: #fff;
+}
+#test-results{
+  font-size: 18px;
+  color: #f9ea06;
+  margin: 10px 0px 15px 0px;
+}

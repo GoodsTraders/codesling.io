@@ -6,6 +6,7 @@ import { throttle } from 'lodash';
 import Button from '../globals/Button';
 import StdOut from './StdOut';
 import EditorHeader from './EditorHeader';
+import TestList from './TestCases/TestList.js';
 
 import 'codemirror/mode/javascript/javascript.js';
 import 'codemirror/lib/codemirror.css';
@@ -150,8 +151,7 @@ class Sling extends Component {
                   onChange={this.handleTest}
                 />
               </div>
-              {/* <input type='text' onChange={this.handleTest} />
-              <button type='button' onClick={this.runTest.bind(this)} >Click to Test</button> */}
+              
             </div>
             <div className='col-lg-6'>
               <div className="stdout-container">
@@ -163,9 +163,7 @@ class Sling extends Component {
                   onClick={this.runTest}
                 />
                 <div id='mocha'></div>
-                <StdOut 
-                  text={this.state.testout}
-                />
+                <TestList text={this.state.testout} />
               </div>
             </div>
           </div>
